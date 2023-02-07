@@ -11,7 +11,7 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(Cors());
 
-var collection;
+collection = client.db("indigp").collection("warehouses");
 
 server.get("/search", async (request, response) => {
     try {
@@ -49,7 +49,7 @@ server.get("/search", async (request, response) => {
 server.listen("3000", async () => {
     try {
         await client.connect();
-        collection = client.db("indigp").collection("warehouses");
+        
     } catch (e) {
         console.log(e)
     }
